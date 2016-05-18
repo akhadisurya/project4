@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+// load the env vars
+require('dotenv').load();
+
+var mongoose = require('mongoose');
+
 var app = express();
 
 // view engine setup

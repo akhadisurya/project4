@@ -40,9 +40,9 @@ function updateFeed(request, response) {
   Feed.findById({_id: id}, function(error, feed) {
     if(error) response.json({message: 'Could not find feeds b/c:' + error});
 
-    if(request.body.name) criminal.name = request.body.name;
-    if(request.body.location) criminal.location = request.body.location;
-    if(request.body.status) criminal.status = request.body.status;
+    if(request.body.title) feed.title = request.body.title;
+    if(request.body.body) feed.body = request.body.body;
+    if(request.body.updated) feed.updated = request.body.updated;
 
     feed.save(function(error) {
       if(error) response.json({messsage: 'Could not update feed b/c:' + error});

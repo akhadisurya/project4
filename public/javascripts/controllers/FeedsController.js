@@ -1,69 +1,71 @@
-var Feed = require('../models/feed');
+(function() {
+  angular.module('ProjectFour')
+    .controller("FeedListController", FeedListController)
+    .controller("ShowFeedController", ShowFeedController)
+    .controller("FeedNewController", FeedNewController)
+    .controller("FeedEditController", FeedEditController);
 
-module.exports = {
-  index: index,
-  show: show,
-  create: create,
-  update: update,
-  destroy: destroy
-}
+    FeedListController.$inject = ['FeedResource'];
+    ShowFeedController.$inject = ['FeedResource', '$stateParams'];
+    FeedNewController.$inject = ['FeedResource', '$state'];
+    FeedEditController.$inject = ['FeedResource', '$stateParams', '$state'];
 
-function index(req, res, next) {
-  Feed.find({}, function(err, feeds) {
-    if (err) next(err);
+    function FeedListController(FeedResource) {
+      var vm = this;
+      vm.feeds = [];
+      vm.destroy = destroy;
 
-    res.json(feeds);
-  });
-}
+      FeedResource.query().$promise.then(function(feeds) {
+        vm.feeds = feeds;
+      });
 
-function show(req, res, next) {
-  var id = req.params.id;
+      function destroy(feedToDelete) {
+        FeedResource.delete({id: feedToDelete._id}).$promise.then(function (response) {
+          console.log(response.message);
+          vm.feeds = vm.feeds.filter(function(feed) {
+            return feed != feedToDelete;
+          });
+        });
+      }
+    }
 
-  Feed.findById(id, function(err, feed) {
-    if (err) next(err);
+    function ShowFeedController(FeedResource, $stateParams) {
+      var vm = this;
+      vm.feed = {};
 
-    res.json(feed);
-  });
-}
+      ShowResource.get({id: $stateParams.id}).$promise.then(function(jsonFeed) {
+          vm.feed = jsonFeed;
+      });
+    }
 
-function create(req, res, next) {
-  var newFeed = new Feed(req.body);
+    function FeedNewController(FeedResource, $state) {
+      var vm = this;
+      vm.newFeed = {};
+      vm.addFeed = addFeed;
 
-  newFeed.save(function(err, savedFeed) {
-    if (err) next(err);
+      function addFeed() {
+        FeedResource.save(vm.newFeed).$promise.then(function(jsonFeed) {
+          vm.newFeed = {};
+          $state.go('showFeed', {id: jsonFeed._id});
+        });
+      }
+    }
 
-    res.json(savedFeed);
-  });
+    function FeedEditController(FeedResource, $stateParams, $state) {
+      var vm = this;
+      vm.feed = {};
+      vm.editFeed = editFeed;
 
-}
+      FeedResource.get({id: $stateParams.id}).$promise.then(function(jsonFeed) {
+          vm.feed = jsonFeed;
+      });
 
-function update(req, res, next) {
-  var id = req.params.id;
+      function editFeed() {
+        FeedResource.update({id: vm.feed._id}, vm.feed).$promise.then(function(updatedFeed) {
+          vm.feed = updatedFeed;
+          $state.go('showFeed', {id: updatedFeed._id});
+        });
+      }
+    }
 
-  Feed.findById(id, function(err, feed) {
-    if (err) next(err);
-
-    feed.title = req.body.title;
-    feed.body = req.body.body;
-    feed.author = req.body.author;
-    feed.author = req.body.author;
-    feed.thumbnail = req.body.thumbnail;
-    feed.updated = req.body.updated;
-
-    feed.save(function(err, updatedFeed) {
-      if (err) next(err);
-
-      res.json(updatedFeed);
-    });
-
-  });
-}
-
-function destroy(req, res, next) {
-  var id = req.params.id;
-  Feed.remove({_id:id}, function(err) {
-    if (err) next(err);
-
-    res.json({message: 'Feed successfully deleted'});
-  });
-}
+})();

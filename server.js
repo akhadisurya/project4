@@ -11,7 +11,14 @@ var users = require('./routes/users');
 // load the env vars
 require('dotenv').load();
 
+// require our routes
+var indexRoutes = require('./routes/index');
+var apiRoutes = require('./routes/api');
+var api = require('./routes/api');
+
+
 var mongoose = require('mongoose');
+var db = require('./config/database.js');
 
 var app = express();
 
@@ -29,6 +36,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+// mount all routes with appropriate base paths
+app.use('/', indexRoutes);
+app.use('/api', apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

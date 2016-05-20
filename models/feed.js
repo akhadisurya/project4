@@ -7,8 +7,8 @@ var feedSchema = new mongoose.Schema({
   score: {type: Number, min: 1, max: 100, default: 0},
   author: {type: String, required: "true"},
   thumbnail: {type: String, required: "true"},
-  created: {type: Date, default: Date.now},
-  updated: {type: Date, default: Date.now}
+  created: {type: Date, default: new Date()},
+  updated: {type: Date, default: new Date()}
 });
 
 

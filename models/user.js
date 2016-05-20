@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 
 
 var userSchema = new mongoose.Schema({
-  name: {type: String, required: "true"}
+  name: {type: String, required: "true"},
   email: String,
   googleId: String,
   imageUrl: String,
-  created: { type: Date, default: Date.now }
+  created: { type: Date, default: new Date() }
 });
 
 

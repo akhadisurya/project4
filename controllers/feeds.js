@@ -1,10 +1,9 @@
-var Feed = require('../models/Feed');
+var Feed = require('../models/feed');
 
 // GET
 function getAll(request, response) {
   Feed.find(function(error, feeds) {
     if(error) response.json({message: 'Could not find any feeds'});
-
     response.json({feeds: feeds});
   }).select('-__v');
 }

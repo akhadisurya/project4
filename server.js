@@ -5,22 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./config/routes');
 
 // load the env vars
 require('dotenv').load();
 
-// require our routes
-var indexRoutes = require('./routes/index');
-var apiRoutes = require('./routes/api');
-var api = require('./routes/api');
-
-
 var mongoose = require('mongoose');
 var db = require('./config/database.js');
-
 var app = express();
+
+// CORS (allows a separate client, like Postman, to send requests)…
+// (in development only…)
+if (app.get('env') === 'development') {
+  app.use(allowCors); // See helper at bottom.
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,12 +33,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+// Validate content-type.
+app.use(validateContentType);
 
-// mount all routes with appropriate base paths
-app.use('/', indexRoutes);
-app.use('/api', apiRoutes);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,6 +46,7 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
+app.use(addFailedAuthHeader);
 
 // development error handler
 // will print stacktrace
@@ -72,5 +70,43 @@ app.use(function(err, req, res, next) {
   });
 });
 
+function allowCors(req, res, next) {
+  res.header('Access-Control-Allow-Origin',  '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+
+  // Handle "preflight" requests.
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+}
+
+function validateContentType(req, res, next) {
+  var methods = ['PUT', 'PATCH', 'POST'];
+  if (                                    // If the request is
+    methods.indexOf(req.method) !== -1 && // one of PUT, PATCH or POST, and
+    Object.keys(req.body).length !== 0 && // has a body that is not empty, and
+    !req.is('json')                       // does not have an application/json
+  ) {                                     // Content-Type header, then …
+    var message = 'Content-Type header must be application/json.';
+    res.status(400).json(message);
+  } else {
+    next();
+  }
+}
+
+// When there is a 401 Unauthorized, the repsonse shall include a header
+// WWW-Authenticate that tells the client how they must authenticate
+// their requests.
+function addFailedAuthHeader(err, req, res, next) {
+  var header = {'WWW-Authenticate': 'Bearer'};
+  if (err.status === 401) {
+    if (err.realm) header['WWW-Authenticate'] += ` realm="${err.realm}"`;
+    res.set(header);
+  }
+  next(err);
+}
 
 module.exports = app;

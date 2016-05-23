@@ -33,6 +33,12 @@
         templateUrl: 'js/feeds/feed-edit.html',
         controller: 'FeedEditController',
         controllerAs: 'feedEditVm'
+      })
+      .state("signin", {
+        url:          "/signin",
+        templateUrl:  "/js/auth/signin.html",
+        controller:   "SignInController",
+        controllerAs: "vm"
       });
 
     $urlRouterProvider.otherwise('/');

@@ -9,6 +9,10 @@ router.get('/feeds', feedsCtrl.getAll);
 // POST /api/feeds
 router.post('/feeds', feedsCtrl.createFeed);
 
+// POST /api/feeds
+router.post('/users', usersCtrl.create);
+
+
 // Show /api/feeds/:id
 router.get('/feeds/:id', feedsCtrl.getFeed);
 

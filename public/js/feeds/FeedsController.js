@@ -46,7 +46,8 @@
       function addFeed() {
         FeedResource.save(vm.newFeed).$promise.then(function(jsonFeed) {
           vm.newFeed = {};
-          $state.go('showFeed', {id: jsonFeed._id});
+          $state.go('FeedList')
+          // $state.go('ShowFeed', {id: jsonFeed._id});
         });
       }
     }

@@ -16,9 +16,11 @@ function createFeed(request, response) {
   var feed = new Feed(request.body);
 
   feed.save(function(error) {
-    if(error) response.json({messsage: 'Could not ceate feed b/c:' + error});
-
-    response.json({feed: feed});
+    if(error) {
+      response.json({messsage: 'Could not ceate feed b/c:' + error});
+    } else {
+      response.json({feed: feed});
+    }
   });
 }
 
@@ -27,9 +29,11 @@ function getFeed(request, response) {
   var id = request.params.id;
 
   Feed.findById({_id: id}, function(error, feed) {
-    if(error) response.json({message: 'Could not find feed b/c:' + error});
-
-    response.json({feed: feed});
+    if(error) {
+      response.json({message: 'Could not find feed b/c:' + error});
+    } else {
+      response.json({feed: feed});
+    }
   }).select('-__v');
 }
 

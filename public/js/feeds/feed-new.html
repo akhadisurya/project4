@@ -1,0 +1,18 @@
+<div>
+  <h3>Add a New Feed</h3>
+  <form id='new-feed' ng-submit="feedNewVm.addFeed()">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" name="title" ng-model="feedNewVm.newFeed.title">
+    </div>
+    <div>
+      <label for="body">Body:</label>
+      <input type="text" name="body" ng-model="feedNewVm.newFeed.body">
+    </div>
+    <div>
+      <label for="author">Author:</label>
+      <input type="text" name="author" ng-model="feedNewVm.newFeed.author">
+    </div>
+    <input type="submit" value="Add">
+  </form>
+</div>

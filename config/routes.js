@@ -37,4 +37,19 @@ router.route('/api/token')
 // POST /api/users
 router.post('/api/users', usersController.create);
 
+// GET /api/feeds
+router.get('/api/feeds', feedsController.getAll);
+
+// POST /api/feeds
+router.post('/api/feeds', feedsController.createFeed);
+
+// Show /api/feeds/:id
+router.get('/api/feeds/:id', feedsController.getFeed);
+
+// update /api/feeds/:id
+router.patch('/api/feeds/:id', feedsController.updateFeed);
+
+// DELETE /api/feeds/:id
+router.delete('/api/feeds/:id', feedsController.removeFeed);
+
 module.exports = router

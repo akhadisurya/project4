@@ -40,17 +40,17 @@ function getFeed(request, response) {
 function updateFeed(request, response) {
   var id = request.params.id;
 
-  Feed.findById({_id: id}, function(error, feed) {
+  Feed.findById(id, function(error, feed) {
     if(error) response.json({message: 'Could not find feeds b/c:' + error});
 
     if(request.body.title) feed.title = request.body.title;
     if(request.body.body) feed.body = request.body.body;
-    if(request.body.updated) feed.updated = request.body.updated;
+    if(request.body.author) feed.author = request.body.author;
 
-    feed.save(function(error) {
+    feed.save(function(error, updatedFeed) {
       if(error) response.json({messsage: 'Could not update feed b/c:' + error});
 
-      response.json({message: 'Feed successfully updated', feed: feed});
+      response.json(updatedFeed);
     });
   }).select('-__v');
 }

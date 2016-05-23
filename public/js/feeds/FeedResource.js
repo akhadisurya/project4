@@ -8,7 +8,7 @@
     return $resource(
       "/api/feeds/:id",
       {id: '@id'}, {
-        'update': { method: 'PUT'}
+        'update': { method: 'PATCH'}
       }
     );
   }

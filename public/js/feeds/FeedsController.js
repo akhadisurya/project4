@@ -64,7 +64,7 @@
       function editFeed() {
         FeedResource.update({id: vm.feed._id}, vm.feed).$promise.then(function(updatedFeed) {
           vm.feed = updatedFeed;
-          $state.go('showFeed', {id: updatedFeed._id});
+          $state.go('ShowFeed', {id: updatedFeed._id});
         });
       }
     }

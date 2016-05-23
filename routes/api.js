@@ -12,6 +12,9 @@ router.post('/feeds', feedsCtrl.createFeed);
 // Show /api/feeds/:id
 router.get('/feeds/:id', feedsCtrl.getFeed);
 
+// update /api/feeds/:id
+router.patch('/feeds/:id', feedsCtrl.updateFeed);
+
 // DELETE /api/feeds/:id
 router.delete('/feeds/:id', feedsCtrl.removeFeed);
 

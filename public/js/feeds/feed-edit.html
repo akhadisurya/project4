@@ -1,0 +1,18 @@
+<div>
+  <h3>Edit</h3>
+  <form id='edit-feed' ng-submit="feedEditVm.editShow()">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" name="title" ng-model="feedEditVm.feed.title">
+    </div>
+    <div>
+      <label for="body">Body:</label>
+      <input type="text" name="body" ng-model="feedEditVm.feed.body">
+    </div>
+    <div>
+      <label for="author">Author:</label>
+      <input type="text" name="author" ng-model="feedEditVm.feed.source">
+    </div>
+    <input type="submit" value="Edit">
+  </form>
+</div>

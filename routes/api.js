@@ -9,6 +9,9 @@ router.get('/feeds', feedsCtrl.getAll);
 // POST /api/feeds
 router.post('/feeds', feedsCtrl.createFeed);
 
+// Show /api/feeds/:id
+router.get('/feeds/:id', feedsCtrl.getFeed);
+
 // DELETE /api/feeds/:id
 router.delete('/feeds/:id', feedsCtrl.removeFeed);
 

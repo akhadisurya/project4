@@ -33,7 +33,7 @@
       var vm = this;
       vm.feed = {};
 
-      ShowResource.get({id: $stateParams.id}).$promise.then(function(jsonFeed) {
+      FeedResource.get({id: $stateParams.id}).$promise.then(function(jsonFeed) {
           vm.feed = jsonFeed;
       });
     }

@@ -4,7 +4,7 @@ var Feed = require('../models/feed');
 function getAll(request, response) {
   Feed.find(function(error, feeds) {
     if(error) response.json({message: 'Could not find any feeds'});
-    response.json({feeds: feeds});
+    response.json(feeds);
   }).select('-__v');
 }
 

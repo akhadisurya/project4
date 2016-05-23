@@ -1,2 +1,3 @@
-// app.js - Inject ngResource as a module dependency
-angular.module("ProjectFour", ["ngResource"]);
+(function() {
+  angular.module('ProjectFour', ['ui.router', 'ngResource']);
+})();

@@ -1,0 +1,10 @@
+Feed List Template
+<a ui-sref="FeedNew">Add a new feed</a>
+<div ng-repeat="feed in feedListVm.feeds">
+  <p>{{feed.title}}</p>
+  <p>{{feed.body}}</p>
+  <p>{{feed.author}}</p>
+  <a ui-sref="ShowFeed({id: feed._id})">See This Feed</a>
+  <a ng-click="feedListVm.destroy(feed)">Delete</a>
+  <hr>
+</div>

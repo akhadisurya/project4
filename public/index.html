@@ -22,9 +22,10 @@
       </nav>
     </header>  -->
 
+
     <header ng-controller="NavbarController as vm">
       <button class="toggle-nav">
-          <span><img id="navLogo" src="http://s33.postimg.org/678q35z4v/7dc0b7d7_a3fe_45bb_8681_b5e681d430b9.png"></span>
+          <span>></span>
       </button>
       <ul class="nav">
           <li class="loud"><a ng-hide="vm.authService.isLoggedIn()" ui-sref="signin">Sign In</a></li>
@@ -36,6 +37,7 @@
 
 
     <div ui-view></div>
+
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="js/app.js" charset="utf-8"></script>
     <script src="js/style.js"></script>
@@ -52,5 +54,10 @@
     <script src="js/auth/navbar.controller.js" charset="utf-8"></script>
     <script src="js/auth/token.service.js" charset="utf-8"></script>
     <script src="js/auth/user.service.js" charset="utf-8"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+
   </body>
 </html>

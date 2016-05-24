@@ -1,11 +1,30 @@
-<p>Articles:</p>
 
-<div ng-repeat="feed in homeListVm.feeds">
-  <p>{{feed.title}}</p>
+<br>
+<div class="row">
+  <div class="col-md-4" ng-repeat="feed in homeListVm.feeds">
+    <p>{{feed.title}}</p>
+    <p>{{feed.body}}</p>
+    <p>{{feed.author}}</p>
+    <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
+  </div>
+<!--   <div class="col-md-4">
+    <p>{{feed.title}}</p>
+    <p>{{feed.body}}</p>
+    <p>{{feed.author}}</p>
+    <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
+  </div> -->
+ <!--  <div class="col-md-4">
+    <p>{{feed.title}}</p>
+    <p>{{feed.body}}</p>
+    <p>{{feed.author}}</p>
+    <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
+  </div> -->
+
+  <!-- <p>{{feed.title}}</p>
   <p>{{feed.body}}</p>
   <p>By: {{feed.author}}</p>
-  <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
+  <button ui-sref="ShowFeed({id: feed._id})">Read More</button> -->
 
-  <hr>
+
 </div>
 

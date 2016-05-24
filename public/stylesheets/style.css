@@ -1,6 +1,10 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1JM4ZObdqJlJ1IWfK_Lsghj80RFSTbcMxkMliQJPA1DY6Cm2TKA);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -17,16 +21,22 @@ a {
     height: 60px;
 }
 
+#feedHome {
+    padding: 3em 2em;
+    background: #FFF;
+    text-align: center;
+    border-radius: 0px 0px 6px 6px;
+}
+
 @import url(http://fonts.googleapis.com/css?family=Allan);
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
 /* General styles */
 
 body{
-  font: 400 20px 'Droid Sans', sans-serif;
+  padding: 30px;
   line-height: 1.5em;
     background-color: #fff;
-    color: #c0c5ce;
 }
 
 /* Style for header */
@@ -114,8 +124,8 @@ button.toggle-nav:hover{
 }
 button.toggle-nav span{
     display: block;
-    /*-webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);*/
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
 }
@@ -127,8 +137,8 @@ header.active button.toggle-nav{
   background-color: #256f6f;
 }
 header.active button.toggle-nav span{
-    /*-webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);*/
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
 }
 
 @media screen and (max-width: 600px){

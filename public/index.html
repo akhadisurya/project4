@@ -22,16 +22,15 @@
       </nav>
     </header>  -->
 
-    <header>
+    <header ng-controller="NavbarController as vm">
       <button class="toggle-nav">
           <span><img id="navLogo" src="http://s33.postimg.org/678q35z4v/7dc0b7d7_a3fe_45bb_8681_b5e681d430b9.png"></span>
       </button>
       <ul class="nav">
-          <li class="loud"><a href="#">Home</a></li>
-          <li class="loud"><a href="#">About</a></li>
-          <li class="loud"><a href="#">Case studies</a></li>
-          <li class="loud"><a href="#">Clients</a></li>
-          <li class="loud"><a href="#">Contact</a></li>
+          <li class="loud"><a ng-hide="vm.authService.isLoggedIn()" ui-sref="signin">Sign In</a></li>
+          <li class="loud"><a ng-show="vm.authService.isLoggedIn()" ng-click= "vm.authService.logOut()">Sign Out</a></li>
+          <li class="loud"><a ui-sref="FeedList">Feeds</a></li>
+          <li class="loud"><a href="#">Trending Now</a></li>
       </ul>
   </header>
 

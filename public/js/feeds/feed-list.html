@@ -4,7 +4,7 @@ Feed List Template
   <p>{{feed.title}}</p>
   <p>{{feed.body}}</p>
   <p>By: {{feed.author}}</p>
-  <a ui-sref="ShowFeed({id: feed._id})">See This Feed</a>
-  <a ng-click="feedListVm.destroy(feed)">Delete</a>
+  <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
+  <button ng-click="feedListVm.destroy(feed)">X</button>
   <hr>
 </div>

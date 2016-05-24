@@ -8,7 +8,9 @@
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'home.html'
+        templateUrl: 'home.html',
+        controller: 'HomeController',
+        controllerAs: 'homeListVm'
       })
       .state('FeedList', {
         url: '/feeds/list',

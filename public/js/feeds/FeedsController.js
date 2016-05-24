@@ -1,10 +1,12 @@
 (function() {
   angular.module('ProjectFour')
+    .controller("HomeController", HomeController)
     .controller("FeedListController", FeedListController)
     .controller("ShowFeedController", ShowFeedController)
     .controller("FeedNewController", FeedNewController)
     .controller("FeedEditController", FeedEditController);
 
+    HomeController.$inject = ['FeedResource'];
     FeedListController.$inject = ['FeedResource'];
     ShowFeedController.$inject = ['FeedResource', '$stateParams'];
     FeedNewController.$inject = ['FeedResource', '$state'];
@@ -28,6 +30,16 @@
         });
       }
     }
+
+    function HomeController(FeedResource) {
+      var vm = this;
+      vm.feeds = [];
+
+      FeedResource.query().$promise.then(function(feeds) {
+        vm.feeds = feeds;
+      });
+
+      }
 
     function ShowFeedController(FeedResource, $stateParams) {
       var vm = this;

@@ -1,30 +1,17 @@
 
 <br>
 <div class="row">
-  <div class="col-md-4" ng-repeat="feed in homeListVm.feeds">
+<br>
+<br>
+<br>
+  <div class="col-md-4" ng-repeat="feed in homeListVm.feeds" id="feedHome">
     <p>{{feed.title}}</p>
     <p>{{feed.body}}</p>
     <p>{{feed.author}}</p>
+    <img ng-src="{{feed.thumbnail}}" id="smallPict">
     <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
   </div>
-<!--   <div class="col-md-4">
-    <p>{{feed.title}}</p>
-    <p>{{feed.body}}</p>
-    <p>{{feed.author}}</p>
-    <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
-  </div> -->
- <!--  <div class="col-md-4">
-    <p>{{feed.title}}</p>
-    <p>{{feed.body}}</p>
-    <p>{{feed.author}}</p>
-    <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
-  </div> -->
-
-  <!-- <p>{{feed.title}}</p>
-  <p>{{feed.body}}</p>
-  <p>By: {{feed.author}}</p>
-  <button ui-sref="ShowFeed({id: feed._id})">Read More</button> -->
-
+  <br>
 
 </div>
 

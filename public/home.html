@@ -1,10 +1,10 @@
-<p>This is my landing page</p>
-<a ui-sref="FeedList">See all feeds</a>
+<p>Articles:</p>
+
 <div ng-repeat="feed in homeListVm.feeds">
   <p>{{feed.title}}</p>
   <p>{{feed.body}}</p>
   <p>By: {{feed.author}}</p>
-  <a ui-sref="ShowFeed({id: feed._id})">See This Feed</a>
+  <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
 
   <hr>
 </div>

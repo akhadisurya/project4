@@ -11,19 +11,35 @@
 
   </head>
   <body>
-    <header ng-controller="NavbarController as vm">
+  <!--   <header ng-controller="NavbarController as vm">
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-          <a ui-sref="/" class="navbar-brand">You Blog</a>
+          <!-- <a ui-sref="/" class="navbar-brand">You Blog</a> -->
+         <!--  <img id="logo" src="http://s33.postimg.org/678q35z4v/7dc0b7d7_a3fe_45bb_8681_b5e681d430b9.png">
           <button ng-hide="vm.authService.isLoggedIn()" ui-sref="signin" type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
           <button ng-show="vm.authService.isLoggedIn()" ng-click= "vm.authService.logOut()" type="button" class="btn btn-default navbar-btn navbar-right">Sign out</button>
         </div>
       </nav>
-    </header>
+    </header>  -->
+
+    <header>
+      <button class="toggle-nav">
+          <span><img id="navLogo" src="http://s33.postimg.org/678q35z4v/7dc0b7d7_a3fe_45bb_8681_b5e681d430b9.png"></span>
+      </button>
+      <ul class="nav">
+          <li class="loud"><a href="#">Home</a></li>
+          <li class="loud"><a href="#">About</a></li>
+          <li class="loud"><a href="#">Case studies</a></li>
+          <li class="loud"><a href="#">Clients</a></li>
+          <li class="loud"><a href="#">Contact</a></li>
+      </ul>
+  </header>
 
 
     <div ui-view></div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/style.js"></script>
     <script src="js/config/app.debug.js"></script>
     <script src="js/config/app.httpInterceptors.js"></script>
     <script src="js/config/jsonHeaders.service.js"></script>

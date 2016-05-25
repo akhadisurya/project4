@@ -15,10 +15,14 @@
     function FeedListController(FeedResource, $http) {
       var vm = this;
       vm.feeds = [];
+      vm.names = {};
       vm.destroy = destroy;
 
       $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
         vm.feeds = feeds.data.feeds;
+        vm.names = feeds.data.names;
+        console.log(vm.names)
+        console.log(feeds.data.names)
         // console.log("your feeds", feeds)
       });
 
@@ -54,16 +58,13 @@
     function FeedNewController(FeedResource, $state) {
       var vm = this;
       vm.newFeed ={};
-      vm.names = {};
-
 
       vm.addFeed = addFeed;
 
       function addFeed() {
         FeedResource.save(vm.newFeed).$promise.then(function(jsonFeed) {
-          console.log(jsonFeed)
+          //console.log(jsonFeed)
           vm.newFeed = {};
-          // vm.names = jsonFeed.feed.postedBy;
 
           $state.go('FeedList')
           // $state.go('ShowFeed', {id: jsonFeed._id});

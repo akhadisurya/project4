@@ -3,7 +3,6 @@ var User = require("../models/user");
 
 // GET
 function getAll(request, response) {
-  var populateQuery = [{path:"postedBy", select:"name"}]
   Feed.find({}, function(error, feeds) {
     if(error) response.json({message: 'Could not find any feeds'});
     User.find({}, function(error, users){
@@ -11,8 +10,8 @@ function getAll(request, response) {
         var names = {};
         users.forEach(function(user){
           names[user._id] = user.name
-        })
-    response.json({feeds: feeds, names: names});
+      })
+      response.json({feeds: feeds, names: names});
     })
   }).select('-__v');
 }

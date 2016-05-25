@@ -6,7 +6,7 @@
     .controller("FeedNewController", FeedNewController)
     .controller("FeedEditController", FeedEditController);
 
-    HomeController.$inject = ['FeedResource'];
+    HomeController.$inject = ['FeedResource', '$http'];
     FeedListController.$inject = ['FeedResource', '$http'];
     ShowFeedController.$inject = ['FeedResource', '$stateParams'];
     FeedNewController.$inject = ['FeedResource', '$state'];
@@ -21,10 +21,15 @@
       $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
         vm.feeds = feeds.data.feeds;
         vm.names = feeds.data.names;
-        console.log(vm.names)
-        console.log(feeds.data.names)
+        // console.log(vm.names)
+        // console.log(feeds.data.names)
         // console.log("your feeds", feeds)
       });
+
+      // function getWords(feed) {
+      //   console.log("get words")
+      //     return feed.split(/\s+/).slice(1,5).join(" ");
+      // }
 
       function destroy(feedToDelete) {
         FeedResource.delete({id: feedToDelete._id}).$promise.then(function (response) {
@@ -34,14 +39,17 @@
           });
         });
       }
+
     }
 
-    function HomeController(FeedResource) {
+    function HomeController(FeedResource, $http) {
       var vm = this;
       vm.feeds = [];
+      vm.names = {};
 
-      FeedResource.query().$promise.then(function(feeds) {
-        vm.feeds = feeds;
+      $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
+        vm.feeds = feeds.data.feeds;
+        vm.names = feeds.data.names;
       });
 
       }

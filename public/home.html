@@ -4,12 +4,13 @@
 <br>
 <br>
 <br>
-  <div class="col-md-4" ng-repeat="feed in homeListVm.feeds" id="feedHome">
-    <p>{{feed.title}}</p>
-    <p>{{feed.body}}</p>
-    <p>{{feed.author}}</p>
-    <img ng-src="{{feed.thumbnail}}" id="smallPict">
-    <button ui-sref="ShowFeed({id: feed._id})" class="button">Read More</button>
+<div class="col-md-4" ng-repeat="feed in homeListVm.feeds" id="feedHome">
+  <p>{{feed.title}}</p>
+  <p>{{feed.body}}</p>
+  <!-- <p>By: {{ feedListVm.names[feed.postedBy] }}</p> -->
+  <img ng-src="{{feed.thumbnail}}" id="smallPict">
+  <button ui-sref="ShowFeed({id: feed._id})" class="button">Read More</button>
+
   </div>
   <br>
 

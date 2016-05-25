@@ -6,18 +6,24 @@
 
   function MainRouter($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      // .state('home', {
+      //   url: '/',
+      //   templateUrl: 'home.html',
+      //   controller: 'HomeController',
+      //   controllerAs: 'homeListVm'
+      // })
+       .state('FeedList', {
         url: '/',
-        templateUrl: 'home.html',
-        controller: 'HomeController',
-        controllerAs: 'homeListVm'
-      })
-      .state('FeedList', {
-        url: '/feeds/list',
         templateUrl: "js/feeds/feed-list.html",
         controller: 'FeedListController',
         controllerAs: 'feedListVm'
       })
+      // .state('FeedList', {
+      //   url: '/feeds/list',
+      //   templateUrl: "js/feeds/feed-list.html",
+      //   controller: 'FeedListController',
+      //   controllerAs: 'feedListVm'
+      // })
       .state('ShowFeed', {
         url: '/feeds/feed/:id',
         templateUrl: 'js/feeds/show-feed.html',

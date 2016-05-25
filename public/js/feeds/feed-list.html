@@ -1,10 +1,16 @@
-
+<br>
 <a ui-sref="FeedNew">Add a new feed</a>
-<div ng-repeat="feed in feedListVm.feeds">
+<br>
+<br>
+
+<div class="row">
+  <div class="col-md-4" ng-repeat="feed in feedListVm.feeds" id="feedHome">
   <p>{{feed.title}}</p>
   <p>{{feed.body}}</p>
-  <p>By: {{feed.author}}</p>
-  <button ui-sref="ShowFeed({id: feed._id})">Read More</button>
-  <button ng-click="feedListVm.destroy(feed)">X</button>
-  <hr>
+  <p>By: {{feed.postedBy}}</p>
+  <img ng-src="{{feed.thumbnail}}" id="smallPict">
+  <button ui-sref="ShowFeed({id: feed._id})" class="button">Read More</button>
+  <button ng-click="feedListVm.destroy(feed)" class="button">X</button>
+
+  </div>
 </div>

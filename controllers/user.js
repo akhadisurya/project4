@@ -2,7 +2,8 @@ var User = require("../models/user");
 
 module.exports = {
   create: create,
-  me:     me
+  me:     me,
+  show: show
 };
 
 function create(req, res, next) {
@@ -45,3 +46,15 @@ function me(req, res, next) {
       next(err);
     });
 };
+
+function show(request, response) {
+  console.log("show user")
+  User.findById(request.params.id)
+  // .populate('services')
+  .exec(function(error, user) {
+    Feed.find({ userId: request.params.id })
+    if(error) response.json({message: 'Could not find user b/c:' + error});
+
+    response.json(user);
+  });
+}

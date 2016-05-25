@@ -1,10 +1,19 @@
 var Feed = require('../models/feed');
+var User = require("../models/user");
 
 // GET
 function getAll(request, response) {
-  Feed.find(function(error, feeds) {
+  var populateQuery = [{path:"postedBy", select:"name"}]
+  Feed.find({}, function(error, feeds) {
     if(error) response.json({message: 'Could not find any feeds'});
-    response.json(feeds);
+    User.find({}, function(error, users){
+      if(error) response.json(error)
+        var names = {};
+        users.forEach(function(user){
+          names[user._id] = user.name
+        })
+    response.json({feeds: feeds, names: names});
+    })
   }).select('-__v');
 }
 
@@ -14,6 +23,10 @@ function createFeed(request, response) {
   console.log('body:',request.body);
 
   var feed = new Feed(request.body);
+
+  // fill in this line
+  feed.postedBy = request.decoded._id
+  console.log(request.decoded)
 
   feed.save(function(error) {
     if(error) {

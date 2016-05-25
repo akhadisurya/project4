@@ -10,6 +10,7 @@ var token = require('../config/token_auth');
 router.route('/api/users/me')
   .get(token.authenticate, usersController.me);
 
+
 router.route('/api/token')
   .post(token.create);
 
@@ -20,7 +21,8 @@ router.post('/api/users', usersController.create);
 router.get('/api/feeds', feedsController.getAll);
 
 // POST /api/feeds
-router.post('/api/feeds', feedsController.createFeed);
+router.post('/api/feeds', token.authenticate, feedsController.createFeed);
+
 
 // Show /api/feeds/:id
 router.get('/api/feeds/:id', feedsController.getFeed);

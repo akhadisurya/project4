@@ -7,18 +7,19 @@
     .controller("FeedEditController", FeedEditController);
 
     HomeController.$inject = ['FeedResource'];
-    FeedListController.$inject = ['FeedResource'];
+    FeedListController.$inject = ['FeedResource', '$http'];
     ShowFeedController.$inject = ['FeedResource', '$stateParams'];
     FeedNewController.$inject = ['FeedResource', '$state'];
     FeedEditController.$inject = ['FeedResource', '$stateParams', '$state'];
 
-    function FeedListController(FeedResource) {
+    function FeedListController(FeedResource, $http) {
       var vm = this;
       vm.feeds = [];
       vm.destroy = destroy;
 
-      FeedResource.query().$promise.then(function(feeds) {
-        vm.feeds = feeds;
+      $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
+        vm.feeds = feeds.data.feeds;
+        // console.log("your feeds", feeds)
       });
 
       function destroy(feedToDelete) {
@@ -52,12 +53,18 @@
 
     function FeedNewController(FeedResource, $state) {
       var vm = this;
-      vm.newFeed = {};
+      vm.newFeed ={};
+      vm.names = {};
+
+
       vm.addFeed = addFeed;
 
       function addFeed() {
         FeedResource.save(vm.newFeed).$promise.then(function(jsonFeed) {
+          console.log(jsonFeed)
           vm.newFeed = {};
+          // vm.names = jsonFeed.feed.postedBy;
+
           $state.go('FeedList')
           // $state.go('ShowFeed', {id: jsonFeed._id});
         });

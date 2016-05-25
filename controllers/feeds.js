@@ -40,13 +40,13 @@ function createFeed(request, response) {
 function getFeed(request, response) {
   var id = request.params.id;
 
-  Feed.findById(id, function(error, feed) {
+  Feed.findById(id).select('-__v').populate('postedBy').exec(function(error, feed) {
     if(error) {
       response.json({message: 'Could not find feed b/c:' + error});
     } else {
       response.json(feed);
     }
-  }).select('-__v');
+  })
 }
 
 function updateFeed(request, response) {

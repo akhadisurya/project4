@@ -8,7 +8,7 @@
 
     HomeController.$inject = ['FeedResource', '$http'];
     FeedListController.$inject = ['FeedResource', '$http'];
-    ShowFeedController.$inject = ['FeedResource', '$stateParams'];
+    ShowFeedController.$inject = ['FeedResource', '$stateParams', '$http'];
     FeedNewController.$inject = ['FeedResource', '$state'];
     FeedEditController.$inject = ['FeedResource', '$stateParams', '$state'];
 
@@ -54,12 +54,23 @@
 
       }
 
-    function ShowFeedController(FeedResource, $stateParams) {
+    function ShowFeedController(FeedResource, $stateParams, $http) {
       var vm = this;
       vm.feed = {};
+      vm.names = {};
+
+      // $http.get("http://localhost:3000/api/feeds/:id").then(function(feed) {
+      //   vm.feed = feeds.data.feeds;
+      //   console.log(vm.feed)
+      //   vm.names = feeds.data.names;
+
+      // });
 
       FeedResource.get({id: $stateParams.id}).$promise.then(function(jsonFeed) {
           vm.feed = jsonFeed;
+          //console.log(vm.feed)
+          //console.log(jsonFeed.postedBy)
+          vm.names = jsonFeed.postedBy
       });
     }
 

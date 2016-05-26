@@ -19,7 +19,7 @@
       vm.destroy = destroy;
       vm.getWords = getWords
 
-      $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
+      $http.get("/api/feeds").then(function(feeds) {
         vm.feeds = feeds.data.feeds;
         vm.names = feeds.data.names;
         // console.log(vm.names)
@@ -47,7 +47,7 @@
       vm.feeds = [];
       vm.names = {};
 
-      $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
+      $http.get("/api/feeds").then(function(feeds) {
         vm.feeds = feeds.data.feeds;
         vm.names = feeds.data.names;
       });

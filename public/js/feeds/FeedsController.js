@@ -77,9 +77,8 @@
           vm.names = jsonFeed.postedBy
           vm.id = vm.feed._id
           vm.iframeSrc = $sce.trustAsResourceUrl(
-            "https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fyou-blog.herokuapp.com%2F#%2F%2Ffeeds%2Ffeed%2F" + vm.id + "&layout=icon_link&mobile_iframe=false&width=49&height=14&appId")
+            "https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fyou-blog.herokuapp.com%2F%23%2Ffeeds%2Ffeed%2F" + vm.id + "&layout=icon_link&mobile_iframe=false&width=49&height=14&appId")
       });
-
     }
 
     function FeedNewController(FeedResource, $state) {

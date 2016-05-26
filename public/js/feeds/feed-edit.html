@@ -2,19 +2,20 @@
   <h3>Edit</h3>
   <form id='edit-feed' ng-submit="feedEditVm.editFeed()">
     <div>
-      <label for="title">Title:</label>
+      <label for="title">Title:</label><br>
       <input type="text" name="title" ng-model="feedEditVm.feed.title">
     </div>
     <div>
       <label for="body">Content:</label><br>
       <textarea rows="5" cols="80" ng-model="feedEditVm.feed.body">
       </textarea>
-
+    </div>
  <!--    </div>
      <div>
       <label for="thumbnail">Thumbnail:</label><br>
       <input type="url" name="thumbnail" ng-model="feedNewVm.newFeed.thumbnail">
     </div><br> -->
-    <input type="submit" value="Edit">
+    <br>
+    <button class="button" type="submit" value="Edit">Edit</button>
   </form>
 </div>

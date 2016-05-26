@@ -8,7 +8,7 @@
 
     HomeController.$inject = ['FeedResource', '$http'];
     FeedListController.$inject = ['FeedResource', '$http'];
-    ShowFeedController.$inject = ['FeedResource', '$stateParams', '$http'];
+    ShowFeedController.$inject = ['FeedResource', '$stateParams'];
     FeedNewController.$inject = ['FeedResource', '$state'];
     FeedEditController.$inject = ['FeedResource', '$stateParams', '$state'];
 
@@ -54,7 +54,7 @@
 
       }
 
-    function ShowFeedController(FeedResource, $stateParams, $http) {
+    function ShowFeedController(FeedResource, $stateParams) {
       var vm = this;
       vm.feed = {};
       vm.names = {};

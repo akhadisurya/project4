@@ -31,6 +31,7 @@
           <li class="loud"><a ng-hide="vm.authService.isLoggedIn()" ui-sref="signin">Sign In</a></li>
           <li class="loud"><a ng-show="vm.authService.isLoggedIn()" ng-click= "vm.authService.logOut()">Sign Out</a></li>
           <li class="loud"><a ui-sref="FeedList">Feeds</a></li>
+          <li class="loud"><a ng-show="vm.authService.isLoggedIn()" ui-sref="FeedNew">Add a Feed</a></li>
           <li class="loud"><a href="#">Trending Now</a></li>
       </ul>
   </header>

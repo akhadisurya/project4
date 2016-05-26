@@ -3,7 +3,7 @@
 <br>
 <br>
 
-<div class="row">
+<div class="row" ng-controller="NavbarController as vm">
   <div class="col-md-4" ng-repeat="feed in feedListVm.feeds" id="feedHome">
 
   {{feed.firstFeeds}}
@@ -13,7 +13,7 @@
   <img ng-src="{{feed.thumbnail}}" id="smallPict">
 
   <button ui-sref="ShowFeed({id: feed._id})" class="button">Read More</button>
-  <button ng-click="feedListVm.destroy(feed)" class="button">X</button>
+  <button ng-show="vm.authService.isLoggedIn()" ng-click="feedListVm.destroy(feed)" class="button">X</button>
 
   </div>
 </div>

@@ -1,7 +1,11 @@
-<div id="feed-container">
+<div id="feed-container" ng-controller="NavbarController as vm">
+<img ng-src="{{showFeedVm.feed.thumbnail}}" id="smallPict">
 <h1>{{showFeedVm.feed.title}}</h1>
-<h3>{{showFeedVm.feed.body}}</h3>
+<hr style="height:1px;border:none;color:#333;background-color:#333;">
+<h4>{{showFeedVm.feed.body}}</h4>
+
 <p>By: {{showFeedVm.feed.postedBy.name}}</p>
-<button class="button" ui-sref="feedEdit({id:showFeedVm.feed._id})">Edit</button>
+<p>Created at: {{showFeedVm.feed.created}}</p>
+<button class="button" ng-show="vm.authService.isLoggedIn()" ui-sref="feedEdit({id:showFeedVm.feed._id})">Edit</button>
 <button class="button" ui-sref="FeedList">Back to All Feeds</button>
 </div>

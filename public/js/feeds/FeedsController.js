@@ -28,7 +28,7 @@
       });
 
       function getWords(feed) {
-           return feed.body.split(/\s+/).slice(0,15).join(" ") + "...";
+           return feed.body.split(/\s+/).slice(0,30).join(" ") + "...";
       }
 
       function destroy(feedToDelete) {

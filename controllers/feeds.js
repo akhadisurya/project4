@@ -57,7 +57,7 @@ function updateFeed(request, response) {
 
     if(request.body.title) feed.title = request.body.title;
     if(request.body.body) feed.body = request.body.body;
-    if(request.body.author) feed.author = request.body.author;
+    if(request.body.thumbnail) feed.thumbnail = request.body.thumbnail;
 
     feed.save(function(error, updatedFeed) {
       if(error) response.json({messsage: 'Could not update feed b/c:' + error});

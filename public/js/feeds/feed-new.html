@@ -3,7 +3,7 @@
   <form id='new-feed' ng-submit="feedNewVm.addFeed()">
     <div>
       <label for="title">Title:</label><br>
-      <input type="text" name="title" ng-model="feedNewVm.newFeed.title">
+      <input class="textbox" type="text" name="title" ng-model="feedNewVm.newFeed.title">
     </div>
     <div>
       <label for="body">Content:</label><br>
@@ -11,14 +11,11 @@
       </textarea>
 
     </div>
-<!--     <div>
-      <label for="author">Author:</label><br>
-      <input type="text" name="author" ng-model="feedNewVm.newFeed.author">
-    </div> -->
-<!--      <div>
-      <label for="thumbnail">Thumbnail:</label><br>
-      <input type="url" name="thumbnail" ng-model="feedNewVm.newFeed.thumbnail">
-    </div><br> -->
-    <input type="submit" value="Add">
+
+     <div>
+      <label for="thumbnail">Image URL:</label><br>
+      <input class="textbox" type="url" name="thumbnail" ng-model="feedNewVm.newFeed.thumbnail">
+    </div><br>
+    <input class="button" type="submit" value="Add">
   </form>
 </div>

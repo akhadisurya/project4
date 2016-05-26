@@ -52,12 +52,23 @@ a {
 }
 
 #feed-container{
-    adding: 16px 0 12px 0;
+    padding: 16px 15px 12px 15px;
     font-size: 17px;
     line-height: 23px;
     color: #222;
     margin: 100px;
     background-color: white;
+}
+
+.textbox {
+  height: 25px !important;
+  width: 580px !important;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Allan);

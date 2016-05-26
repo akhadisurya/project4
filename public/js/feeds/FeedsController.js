@@ -56,8 +56,11 @@
 
     function ShowFeedController(FeedResource, $stateParams) {
       var vm = this;
+      var id = "";
       vm.feed = {};
       vm.names = {};
+      vm.id = "";
+      // vm.feed = id;
 
       // $http.get("http://localhost:3000/api/feeds/:id").then(function(feed) {
       //   vm.feed = feeds.data.feeds;
@@ -68,9 +71,11 @@
 
       FeedResource.get({id: $stateParams.id}).$promise.then(function(jsonFeed) {
           vm.feed = jsonFeed;
-          //console.log(vm.feed)
+          // console.log(vm.feed._id)
           //console.log(jsonFeed.postedBy)
           vm.names = jsonFeed.postedBy
+          vm.id = vm.feed._id
+          console.log(vm.id)
       });
     }
 

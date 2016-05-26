@@ -5,9 +5,8 @@
 
 <div class="row" ng-controller="NavbarController as vm">
   <div class="col-md-4" ng-repeat="feed in feedListVm.feeds" id="feedHome">
-
-  {{feed.firstFeeds}}
   <h1>{{feed.title}}</h1>
+  <hr style="height:1px;border:none;color:#333;background-color:#333;">
   <p>{{ feedListVm.getWords(feed) }}</p>
   <p>By: {{ feedListVm.names[feed.postedBy] }}</p>
   <img ng-src="{{feed.thumbnail}}" id="smallPict">

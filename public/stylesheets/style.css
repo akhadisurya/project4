@@ -22,7 +22,8 @@ a {
 }
 
 #feedHome {
-    padding: 3em 2em;
+    padding: 2em 3em;
+    margin: auto;
     background: #FFF;
     text-align: center;
     border-radius: 100px 100px 100px 100px;
@@ -70,6 +71,7 @@ a {
   font-weight: bold;
   color: red;
 }
+
 
 @import url(http://fonts.googleapis.com/css?family=Allan);
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
@@ -163,7 +165,7 @@ button.toggle-nav{
     -moz-transition: all 0.25s ease;
 }
 button.toggle-nav:hover{
-    height: 80px;
+    height: 50px;
 }
 button.toggle-nav span{
     display: block;

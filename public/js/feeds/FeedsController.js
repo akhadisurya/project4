@@ -8,7 +8,7 @@
 
     HomeController.$inject = ['FeedResource', '$http'];
     FeedListController.$inject = ['FeedResource', '$http'];
-    ShowFeedController.$inject = ['FeedResource', '$stateParams'];
+    ShowFeedController.$inject = ['FeedResource', '$stateParams', '$sce'];
     FeedNewController.$inject = ['FeedResource', '$state'];
     FeedEditController.$inject = ['FeedResource', '$stateParams', '$state'];
 
@@ -54,12 +54,13 @@
 
       }
 
-    function ShowFeedController(FeedResource, $stateParams) {
+    function ShowFeedController(FeedResource, $stateParams, $sce) {
       var vm = this;
       var id = "";
       vm.feed = {};
       vm.names = {};
       vm.id = "";
+      vm.iframeSrc;
       // vm.feed = id;
 
       // $http.get("http://localhost:3000/api/feeds/:id").then(function(feed) {
@@ -75,8 +76,10 @@
           //console.log(jsonFeed.postedBy)
           vm.names = jsonFeed.postedBy
           vm.id = vm.feed._id
-          console.log(vm.id)
+          vm.iframeSrc = $sce.trustAsResourceUrl(
+            "https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fyou-blog.herokuapp.com%2Ffeeds%2Ffeed%2F" + vm.id + "&layout=icon_link&mobile_iframe=false&width=49&height=14&appId")
       });
+
     }
 
     function FeedNewController(FeedResource, $state) {

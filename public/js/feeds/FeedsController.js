@@ -17,6 +17,7 @@
       vm.feeds = [];
       vm.names = {};
       vm.destroy = destroy;
+      vm.getWords = getWords
 
       $http.get("http://localhost:3000/api/feeds").then(function(feeds) {
         vm.feeds = feeds.data.feeds;
@@ -26,10 +27,9 @@
         // console.log("your feeds", feeds)
       });
 
-      // function getWords(feed) {
-      //   console.log("get words")
-      //     return feed.split(/\s+/).slice(1,5).join(" ");
-      // }
+      function getWords(feed) {
+           return feed.body.split(/\s+/).slice(0,15).join(" ") + "...";
+      }
 
       function destroy(feedToDelete) {
         FeedResource.delete({id: feedToDelete._id}).$promise.then(function (response) {

@@ -21,6 +21,7 @@ a {
 
 #divlogo{
   background-color: #333;
+
 }
 
 #navLogo {
@@ -40,6 +41,17 @@ a {
     max-width: 20%;
     height: auto;
 }
+
+#logoWords{
+    position: relative;
+    left: 42%;
+    z-index: 0;
+    top: 50%;
+    display: inline-flex;
+    color: red;
+    font-size: 40px;
+    font-family: Helvetica, sans-serif;
+  }
 
 
 .button{

@@ -11,7 +11,8 @@
   <p>{{ feedListVm.getWords(feed) }}</p>
   <p>By: {{ feedListVm.names[feed.postedBy] }}</p>
   <img ng-src="{{feed.thumbnail}}" id="smallPict">
-
+  <br>
+  <br>
   <button ui-sref="ShowFeed({id: feed._id})" class="button">Read More</button>
   <button ng-show="vm.authService.isLoggedIn()" ng-click="feedListVm.destroy(feed)" class="button">X</button>
   </figure>

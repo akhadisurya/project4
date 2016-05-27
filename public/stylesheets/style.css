@@ -38,7 +38,7 @@ a {
 }
 
 #smallPict{
-    max-width: 20%;
+    width: 70%;
     height: auto;
 }
 
@@ -50,7 +50,7 @@ a {
     display: inline-flex;
     color: red;
     font-size: 40px;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Rockwell Extra Bold', 'Rockwell Bold', monospace;
   }
 
 
